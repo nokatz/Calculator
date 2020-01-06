@@ -17,13 +17,15 @@ body {
 	background-color: #555;
 	padding: 15px;
 	border-radius: 10px;
+	user-select: none;
 }
 
 #screen {
 	width: 350px;
 	height: 80px;
-	background-color: white;
+	background-color: #FF8C08;
 	margin-bottom: 14px;
+	overflow: hidden;
 }
 
 #screen > p {
@@ -38,6 +40,7 @@ body {
 #keyboard {
 	width: 350px;
 	height: 350px;
+	/* position: relative; */
 	/* border: 1px solid white;	 */
 }
 
@@ -64,7 +67,18 @@ body {
 	background-color: #ccc;
 }
 
+#keyboard .btn:hover {
+	background-color: #333;
+	color: #fff;
+}
 
+#keyboard .btn:active {
+	color: #FF8C08;
+	/* color: #000; */
+	position: relative;
+	top: 1px;
+	left: 1px;
+}
 
 
 
