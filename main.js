@@ -2,7 +2,7 @@
 
 let display, small;
 
-let displayString = "0", smallString;
+let displayString = "0", smallString = "";
 let firstOp, secondOp, operation = 0;
 let result;
 let endCalc = false;	// flag set when the last btn clicked is 'equals'
@@ -11,7 +11,7 @@ display = document.getElementById('large');
 display.innerHTML = displayString;
 
 small = document.getElementById('small');
-small.innerHTML = '';
+small.innerHTML = smallString;
 
 
 // Atach same listener to all num buttons
@@ -36,7 +36,8 @@ function writeNum(e){
 	
 	endCalc = false;
 
-	display.innerHTML = displayString;
+	drawNums();
+
 }
 
 
@@ -60,8 +61,7 @@ function setOperation(e){
 	// displayString += " " + operation + " ";
 	smallString = displayString + " " + operation + " ";
 	
-	small.innerHTML = smallString;
-	display.innerHTML = displayString;
+	drawNums();
 	
 }
 
@@ -96,10 +96,15 @@ function calculate(){
 	operation = 0;
 	endCalc = true;
 	displayString = result;
+	smallString = '';
 	
-	small.innerHTML = '';
-	display.innerHTML = displayString;
+	drawNums();
 	
+}
+
+function drawNums(){
+	small.innerHTML = smallString;
+	display.innerHTML = displayString;	
 }
 
 
