@@ -77,10 +77,15 @@ body {
 	background-color: #ccc;
 }
 
-#keyboard .btn:hover {
-	background-color: #333;
-	color: #fff;
+@media (min-width: 768px) {
+
+	#keyboard .btn:hover {
+		background-color: #333;
+		color: #fff;
+	}
 }
+
+
 
 #keyboard .btn:active {
 	/* color: #FF8C08; */
