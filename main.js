@@ -1,14 +1,17 @@
 ﻿
 
-let display;
+let display, small;
 
-let displayString = "0";
+let displayString = "0", smallString;
 let firstOp, secondOp, operation = 0;
 let result;
 let endCalc = false;	// flag set when the last btn clicked is 'equals'
 
-display = document.getElementById('display');
+display = document.getElementById('large');
 display.innerHTML = displayString;
+
+small = document.getElementById('small');
+small.innerHTML = '';
 
 
 // Atach same listener to all num buttons
@@ -32,7 +35,7 @@ function writeNum(e){
 	}
 	
 	endCalc = false;
-	
+
 	display.innerHTML = displayString;
 }
 
@@ -47,9 +50,17 @@ for(let i = 0; i < opBtns.length; i++){
 function setOperation(e){
 	
 	endCalc = false;
+	
 	firstOp = displayString;
+	
 	operation = e.target.textContent;
-	displayString += " " + operation + " ";
+	
+	endCalc = true;
+	
+	// displayString += " " + operation + " ";
+	smallString = displayString + " " + operation + " ";
+	
+	small.innerHTML = smallString;
 	display.innerHTML = displayString;
 	
 }
@@ -62,20 +73,23 @@ equalsBtn.addEventListener('click', calculate);
 
 function calculate(){
 	
-	secondOp = displayString.slice(displayString.lastIndexOf(" "), displayString.length);
+	// secondOp = displayString.slice(displayString.lastIndexOf(" "), displayString.length);
+	secondOp = displayString;
+	
+	let o1 = parseFloat(firstOp), o2 = parseFloat(secondOp);
 	
 	switch(operation){
 		case '+':
-			result = (parseInt(firstOp) + parseInt(secondOp)).toString();
+			result = o1 + o2;
 			break;
 		case '-':
-			result = (parseInt(firstOp) - parseInt(secondOp)).toString();
+			result = o1 - o2;
 			break;
 		case '*':
-			result = (parseInt(firstOp) * parseInt(secondOp)).toString();
+			result = o1 * o2;
 			break;
 		case '/':
-			result = (parseInt(firstOp) / parseInt(secondOp)).toString();
+			result = o1 / o2;
 			break;
 	}
 	
@@ -83,6 +97,7 @@ function calculate(){
 	endCalc = true;
 	displayString = result;
 	
+	small.innerHTML = '';
 	display.innerHTML = displayString;
 	
 }
